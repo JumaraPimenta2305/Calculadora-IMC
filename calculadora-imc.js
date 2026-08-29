@@ -5,7 +5,7 @@ function calcularIMC(){
     const resultado = document.getElementById("resultado");
     const classificacao_imc = document.getElementById("classificacao-imc");
 
-    if(!peso || !altura){
+    if(!peso || !altura || peso <= 0 || altura <= 0){
         alert("Por favor, preencha o peso e a altura com valores válidos.");
         return;
     }
@@ -13,6 +13,7 @@ function calcularIMC(){
     const imc = peso / (altura * altura);
 
     resultado.textContent = "Seu IMC é: " + imc.toFixed(2);
+    resultado.classList.add("destaque")
 
     let classificacao = "";
 
@@ -30,4 +31,6 @@ function calcularIMC(){
         classificacao = "Obesidade grau III"
     }
         classificacao_imc.textContent = "Classificação do IMC: " + classificacao;
+
+        classificacao_imc.classList.add("classificacao-destaque")
 }
